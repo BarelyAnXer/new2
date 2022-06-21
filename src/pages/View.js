@@ -23,7 +23,7 @@ function View () {
       <p>ID: {contact.id}</p>
       <p>FULL NAME: {contact.fullName}</p>
       <p>EMAIL ADDRESS: {contact.email}</p>
-      <p>CONTACT: {contact.location}</p>
+      <p>CONTACT: {contact.contactNumber}</p>
       <p>LOCATION: {contact.location}</p>
       <p>REGISTERED DATE: {contact.location}</p>
 

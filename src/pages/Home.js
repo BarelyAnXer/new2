@@ -45,6 +45,8 @@ function Home () {
       registeredDate: '',
     }
 
+    console.log(fullName.match('[A-Za-z]+,[ ]+[A-Za-z]+[ ]+[A-Z].'), 'aksjdk')
+
     // validation of fullname
     if (fullName === '') {
       errors.fullName = 'Full Name field cannot be blank'
@@ -52,11 +54,14 @@ function Home () {
         ...prevState,
         fullName: 'Full Name field cannot be blank',
       }))
-    } else if (fullName.match(/[^a-zA-Z ]/g)) {
-      errors.fullName = 'Full Name field accept characters only'
-    } else if (fullName.length > 30) {
+    }
+      // else if (fullName.match(/[^a-zA-Z ]/g)) {
+      //   errors.fullName = 'Full Name field accept characters only'
+    // }
+    else if (fullName.length > 30) {
       errors.fullName = 'Full Name field accept up to 30 in size only'
     }
+
 // validation of email
     if (email === '') {
       errors.email = 'Email Address field Cannot be blank'
@@ -140,13 +145,31 @@ function Home () {
           alignItems: 'center',
         }}>
           <Col>
-            <Form>
+            <Form onSubmit={addContact}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Full Name</Form.Label>
-                <Form.Control type="text"
-                              placeholder="Last Name, First Name, Middle Initial"
-                              onChange={event => setFullName(
-                                event.target.value)}/>
+                <input type="text" pattern="[A-Za-z]+,[ ]+[A-Za-z]+[ ]+[A-Z]."
+                       title="Format should be: Lastname, Firstname Mi."
+                       placeholder="LastName, FirstName MiddleInitial."
+                       style={{
+                         boxSizing: 'border-box',
+                         margin: '0',
+                         fontFamily: 'inherit',
+                         display: 'block',
+                         width: '100%',
+                         padding: '.375rem .75rem',
+                         fontSize: '1rem',
+                         fontWeight: '400',
+                         lineHeight: '1.5',
+                         color: '#212529',
+                         backgroundColor: '#fff',
+                         backgroundClip: 'padding-box',
+                         border: '1px solid #ced4da',
+                         appearance: 'none',
+                         borderRadius: '.25rem',
+                       }}
+                       onChange={event => setFullName(
+                         event.target.value)}/>
                 <p style={{ color: 'red' }}>{formErrors.fullName}</p>
               </Form.Group>
 
@@ -188,7 +211,7 @@ function Home () {
                               }}/>
                 <p style={{ color: 'red' }}>{formErrors.registeredDate}</p>
               </Form.Group>
-              <Button variant="primary" onClick={addContact}>
+              <Button variant="primary" type="submit">
                 Add Contact
               </Button>
             </Form>
