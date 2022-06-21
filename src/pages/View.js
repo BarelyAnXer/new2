@@ -3,15 +3,19 @@ import { Link, useParams } from 'react-router-dom'
 import { Button, Container } from 'react-bootstrap'
 
 function View () {
+
+  // initial states
   const { id } = useParams()
   const [contact, setContact] = useState({})
 
+  // load data from db.json
   useEffect(() => {
     fetch(`http://localhost:5000/contacts/${id}`).
     then(response => response.json()).
     then(data => setContact(data))
   }, [])
 
+  // HTML design
   return (
 
     <Container>

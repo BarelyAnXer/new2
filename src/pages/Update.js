@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 
 function Update () {
+
+  // initial states
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -14,6 +16,7 @@ function Update () {
 
   const [formErrors, setFormErrors] = useState({})
 
+  // load data from database
   useEffect(() => {
     fetch(`http://localhost:5000/contacts/${id}`).
     then(response => response.json()).
@@ -25,11 +28,12 @@ function Update () {
     })
   }, [])
 
+  // update contact with validation
   const updateContact = async (event) => {
     event.preventDefault()
 
     let errors = {}
-
+    // validation form email
     if (email === '') {
       errors.email = 'Email Address field Cannot be blank'
     } else if (email.length > 45) {
@@ -37,7 +41,7 @@ function Update () {
     } else if (!/\S+@\S+\.\S+/.test(email.toLowerCase().trim())) {
       errors.email = 'Email Address field should have email domain'
     }
-
+// validation form contact
     if (contactNo === '') {
       errors.contactNumber = 'Contact Number field cannot be blank'
     } else if (contactNo.length > 11) {
@@ -45,7 +49,7 @@ function Update () {
     } else if (/[a-zA-Z]/g.test(contactNo.toLowerCase().trim())) {
       errors.contactNumber = 'Contact Number field accept numeric values only'
     }
-
+// validation form location
     if (location === '') {
       errors.location = 'Location field cannot be blank'
     }
@@ -53,12 +57,8 @@ function Update () {
     setFormErrors(prevState => {
       return { ...prevState, ...errors }
     })
-    console.log('123123')
-    console.log(Object.keys(errors).length === 0)
-    console.log(Object.keys(errors).length)
-    if (Object.keys(errors).length === 0) {
 
-      console.log('asdlkasd')
+    if (Object.keys(errors).length === 0) {
 
       let yes = window.confirm(`
       Please confirm the update to the following
@@ -85,6 +85,8 @@ function Update () {
       }
     }
   }
+
+  // HTML
   return (
     <Container style={{
       marginTop: '20px',

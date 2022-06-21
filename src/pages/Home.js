@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 
 function Home () {
 
+  // states
   const [contacts, setContacts] = useState([])
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -25,12 +26,14 @@ function Home () {
   const [currentPage, setCurrentPage] = useState(1)
   const [postPerPage, setPostPerPage] = useState(5)
 
+  // loading initial data from db.json
   useEffect(() => {
     fetch('http://localhost:5000/contacts').
     then(response => response.json()).
     then(data => setContacts(data))
   }, [formErrors])
 
+  // validation
   const addContact = async (event) => {
     event.preventDefault()
 
@@ -42,6 +45,7 @@ function Home () {
       registeredDate: '',
     }
 
+    // validation of fullname
     if (fullName === '') {
       errors.fullName = 'Full Name field cannot be blank'
       setFormErrors(prevState => ({
@@ -53,7 +57,7 @@ function Home () {
     } else if (fullName.length > 30) {
       errors.fullName = 'Full Name field accept up to 30 in size only'
     }
-
+// validation of email
     if (email === '') {
       errors.email = 'Email Address field Cannot be blank'
     } else if (email.length > 45) {
@@ -61,7 +65,7 @@ function Home () {
     } else if (!/\S+@\S+\.\S+/.test(email.toLowerCase().trim())) {
       errors.email = 'Email Address field should have email domain'
     }
-
+// validation of contact
     if (contactNo === '') {
       errors.contactNumber = 'Contact Number field cannot be blank'
     } else if (contactNo.length > 11) {
@@ -69,11 +73,11 @@ function Home () {
     } else if (/[a-zA-Z]/g.test(contactNo.toLowerCase().trim())) {
       errors.contactNumber = 'Contact Number field accept numeric values only'
     }
-
+// validation of location
     if (location === '') {
       errors.location = 'Location field cannot be blank'
     }
-
+// validation of registered date
     let today = new Date()
     let dd = String(today.getDate()).padStart(2, '0')
     let mm = String(today.getMonth() + 1).padStart(2, '0')
@@ -90,6 +94,7 @@ function Home () {
       return { ...prevState, ...errors }
     })
 
+    // post new contact if validation doesnt fail
     if (errors.fullName === '' && errors.contactNumber === '' &&
       errors.email === '' && errors.registeredDate === '' &&
       errors.registeredDate === '') {
@@ -113,6 +118,7 @@ function Home () {
 
   }
 
+  // pagination calculation to get how many numbers will show at button
   const indexOfLastPost = currentPage * postPerPage
   const indexOfFirstPost = indexOfLastPost - postPerPage
   const currentContacts = contacts.slice(indexOfFirstPost, indexOfLastPost)
@@ -122,6 +128,7 @@ function Home () {
     pageNumbers.push(i)
   }
 
+  // HTML design
   return (
     <>
       <Container style={{
