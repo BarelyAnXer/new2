@@ -275,7 +275,12 @@ function Home () {
           </tbody>
         </Table>
 
-        <div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}>
           <Pagination>
             <Pagination.Prev onClick={event => setCurrentPage(prevState => {
               if (prevState - 1 < 1) {
