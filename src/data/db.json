@@ -1,14 +1,6 @@
 {
   "contacts": [
     {
-      "fullName": "qwe",
-      "email": "qwe",
-      "contactNumber": "12312",
-      "location": "Cebu",
-      "registeredDate": "2022-06-09",
-      "id": 4
-    },
-    {
       "fullName": "asdasqwe",
       "email": "test@gmail.com",
       "contactNumber": "123123",
@@ -81,12 +73,20 @@
       "id": 14
     },
     {
-      "fullName": "Gazzingan Christian C",
-      "email": "zye@gmail.com",
-      "contactNumber": "09361374657",
+      "fullName": "Gazzingan, Chrstiann C.",
+      "email": "test@gmail.com",
+      "contactNumber": "01923019",
       "location": "Cebu",
-      "registeredDate": "06/21/2022",
+      "registeredDate": "06/22/2022",
       "id": 15
+    },
+    {
+      "fullName": "Gazzingan, Chrstiann C.",
+      "email": "test@gmail.com",
+      "contactNumber": "01923019",
+      "location": "Cebu",
+      "registeredDate": "06/22/2022",
+      "id": 16
     }
   ]
 }

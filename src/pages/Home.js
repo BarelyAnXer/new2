@@ -277,6 +277,14 @@ function Home () {
 
         <div>
           <Pagination>
+            <Pagination.Prev onClick={event => setCurrentPage(prevState => {
+              if (prevState - 1 < 1) {
+                return prevState
+              } else {
+                return prevState - 1
+              }
+
+            })}/>
             {
               pageNumbers.map(number =>
                 <Pagination.Item key={number}
@@ -285,8 +293,24 @@ function Home () {
                 </Pagination.Item>,
               )
             }
+            <Pagination.Next
+              onClick={event => setCurrentPage(prevState => {
+                if (prevState + 1 > pageNumbers.length) {
+                  return prevState
+                } else {
+                  return prevState + 1
+                }
+
+              })}/>
           </Pagination>
+
+
+          <p>showing {currentContacts.length + (currentPage - 1) *
+            5} of {contacts.length}</p>
+
         </div>
+
+
       </Container>
     </>
   )
