@@ -103,10 +103,27 @@ function Update () {
 
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control type="email" placeholder="example@email.com"
-                            value={email}
-                            onChange={event => setEmail(
-                              event.target.value)}/>
+              <input type="email" placeholder="example@email.com"
+                     pattern="[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,4}$"
+                     style={{
+                       boxSizing: 'border-box',
+                       margin: '0',
+                       fontFamily: 'inherit',
+                       display: 'block',
+                       width: '100%',
+                       padding: '.375rem .75rem',
+                       fontSize: '1rem',
+                       fontWeight: '400',
+                       lineHeight: '1.5',
+                       color: '#212529',
+                       backgroundColor: '#fff',
+                       backgroundClip: 'padding-box',
+                       border: '1px solid #ced4da',
+                       appearance: 'none',
+                       borderRadius: '.25rem',
+                     }}
+                     onChange={event => setEmail(
+                       event.target.value)}/>
               <p style={{ color: 'red' }}>{formErrors.email}</p>
             </Form.Group>
 
