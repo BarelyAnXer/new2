@@ -175,7 +175,7 @@ function Home () {
 
               <Form.Group className="mb-3">
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control type="text" placeholder="example@email.com"
+                <Form.Control type="email" placeholder="example@email.com"
                               onChange={event => setEmail(
                                 event.target.value)}/>
                 <p style={{ color: 'red' }}>{formErrors.email}</p>
