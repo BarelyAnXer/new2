@@ -6,14 +6,6 @@
       "contactNumber": "123123",
       "location": "Cebu",
       "registeredDate": "06/20/2022",
-      "id": 5
-    },
-    {
-      "fullName": "asdasqwe",
-      "email": "test@gmail.com",
-      "contactNumber": "123123",
-      "location": "Cebu",
-      "registeredDate": "06/20/2022",
       "id": 6
     },
     {
@@ -44,7 +36,7 @@
       "fullName": "asdasqwe",
       "email": "test@gmail.com",
       "contactNumber": "123123",
-      "location": "Cebu",
+      "location": "Manila",
       "registeredDate": "06/20/2022",
       "id": 11
     },

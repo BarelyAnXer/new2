@@ -104,6 +104,7 @@ function Update () {
             <Form.Group className="mb-3">
               <Form.Label>Email Address</Form.Label>
               <input type="email" placeholder="example@email.com"
+                     value={contact.email}
                      pattern="[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,4}$"
                      style={{
                        boxSizing: 'border-box',

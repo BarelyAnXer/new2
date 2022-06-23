@@ -18,7 +18,7 @@ function Home () {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [contactNo, setContactNo] = useState('')
-  const [location, setLocation] = useState('Cebu')
+  const [location, setLocation] = useState('')
   const [registeredDate, setRegisteredDate] = useState('')
 
   const [formErrors, setFormErrors] = useState({})
@@ -32,6 +32,7 @@ function Home () {
     then(response => response.json()).
     then(data => setContacts(data))
   }, [formErrors])
+
 
   // validation
   const addContact = async (event) => {
@@ -213,6 +214,7 @@ function Home () {
                              value={location}
                              onChange={(event) => setLocation(
                                event.target.value)}>
+                  <option value="">--- Select Location ---</option>
                   <option value="Cebu">Cebu</option>
                   <option value="Manila">Manila</option>
                 </Form.Select>
